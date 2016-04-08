@@ -60,12 +60,14 @@ angular.module('cgPrompt').controller('cgPromptCtrl',['$scope','options','$timeo
 
     $scope.options = options;
 
+    $scope.form = {};
+
     $scope.buttonClicked = function(button){
         if (button.cancel){
             $scope.$dismiss();
             return;
         }
-        if (options.input && angular.element(document.querySelector('#cgPromptForm')).scope().cgPromptForm.$invalid){
+        if (options.input && $scope.form.prompt.$invalid){
             $scope.changed = true;
             return;
         }
